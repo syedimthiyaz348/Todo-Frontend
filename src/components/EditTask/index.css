@@ -1,0 +1,37 @@
+.edit-container{
+    position: fixed;
+    bottom:150px;
+    right: 150px;
+    top: 150px;
+    left: 150px;
+    border: 2px solid grey;
+    background-color: aquamarine;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.cross-mark{
+    align-self: flex-end;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.submit-input{
+    height: 40px;
+    width: 50%;
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    color: black;
+}
+
+.submit-button{
+    height: 30px;
+    width: 100px;
+    border: none;
+    background-color: dodgerblue;
+    border-radius: 8px;
+}

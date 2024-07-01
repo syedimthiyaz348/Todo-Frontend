@@ -1,0 +1,49 @@
+ul{
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin: auto;
+}
+
+.created-task-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex;
+    width: 30%;
+    margin: auto;
+    text-align: center;
+}
+
+.task-input-container{
+    height: 40px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+    gap: 8px;
+    border: none;
+}
+
+.tasks-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.task-input{
+    width: 90%;
+    border-radius:8px ;
+    padding: 15px;
+}
+
+.add-button{
+    height: 100%;
+    width: 100px;
+    border-radius:8px ;
+    justify-self: flex-end;
+}
