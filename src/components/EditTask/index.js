@@ -10,7 +10,8 @@ const EditTask = props => {
     }
 
     const submitingTodo = async () => {
-        const updatingUrl = `https://todobackend-virid.vercel.app/updatetodo/${id}`
+        if (newTask !== ''){
+const updatingUrl = `https://todobackend-virid.vercel.app/updatetodo/${id}`
         const newTaskDetails = {todo : newTask}
         const options = {
             method: "PUT",
@@ -22,7 +23,6 @@ const EditTask = props => {
           };
 
         const response = await fetch(updatingUrl, options)
-        if (newTask !== ''){
             if (response.ok === true){
                 setNewTask('')
                 setUIRendering((prevState) => !prevState);;
@@ -30,9 +30,11 @@ const EditTask = props => {
             }
             }else{
                 alert("Not Allowed")
+closingPopup()
         }
 else{
                 alert("Not Allowed")
+closingPopup ()
         }
         
     }
