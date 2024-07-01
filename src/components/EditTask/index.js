@@ -28,7 +28,9 @@ const EditTask = props => {
                 setUIRendering((prevState) => !prevState);;
                 closingPopup()
             }
-            }
+            }else{
+                alert("Not Allowed")
+        }
 else{
                 alert("Not Allowed")
         }
