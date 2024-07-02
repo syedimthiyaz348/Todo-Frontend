@@ -60,7 +60,8 @@ const Todo = () => {
   };
 
   return (
-    <div>
+    <div className="main-container">
+      <div className="header-container">
       <h1>TODO TASKS</h1>
       <div className="task-input-container">
         <input
@@ -73,6 +74,7 @@ const Todo = () => {
         <button onClick={addingTodo} className="add-button">
           ADD
         </button>
+      </div>
       </div>
       <hr />
       <div className="tasks-container">

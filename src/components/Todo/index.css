@@ -1,5 +1,8 @@
+*{
+    box-sizing: border-box;
+}
 ul{
-    list-style: none;
+    list-style-type: none;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -13,7 +16,7 @@ ul{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex;
+    align-items: flex-start;
     width: 30%;
     margin: auto;
     text-align: center;
@@ -46,4 +49,73 @@ ul{
     width: 100px;
     border-radius:8px ;
     justify-self: flex-end;
+}
+
+@media (max-width:576px){
+    .main-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+    }
+    .task-input-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    .add-button{
+        width: 100px;
+        height: 30px;
+    }
+    .task-input{
+        border-radius:8px ;
+        padding: 15px;
+        height: 25px;
+    }
+    .header-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        gap: 15px;
+        width: 100%;
+    }
+    .tasks-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .created-task-cont{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+    }
+    .ul{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        font-size:10px ;
+        
+    }
+    li{
+        list-style-type: none;
+        float: left;
+        margin-left: none;
+    }
+    ul#remove{
+        list-style-type:none;
+    }
 }

@@ -35,3 +35,28 @@
     background-color: dodgerblue;
     border-radius: 8px;
 }
+
+@media (max-width:576px){
+    .edit-container{
+        position: fixed;
+        left: 15px;
+        right: 15px;
+        bottom: 20px;
+        border: 2px solid grey;
+        background-color: rgb(161, 170, 167);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+    .submit-input{
+        height: 25px;
+        width: 90%;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+        color: black;
+    }
+}
