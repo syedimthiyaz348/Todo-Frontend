@@ -35,6 +35,7 @@ const EditTask = (props) => {
     }
   };
 
+<<<<<<< HEAD
   const enteringNewTask = (event) => {
     setNewTask(event.target.value);
   };
@@ -58,5 +59,36 @@ const EditTask = (props) => {
     </div>
   );
 };
+=======
+    const submitingTodo = async () => {
+        if (newTask !== ''){
+const updatingUrl = `https://todobackend-virid.vercel.app/updatetodo/${id}`
+        const newTaskDetails = {todo : newTask}
+        const options = {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(newTaskDetails),
+          };
+
+        const response = await fetch(updatingUrl, options)
+            if (response.ok === true){
+                setNewTask('')
+                setUIRendering((prevState) => !prevState);;
+                closingPopup()
+            }
+            }else{
+                alert("Not Allowed")
+closingPopup()
+        }
+else{
+                alert("Not Allowed")
+closingPopup ()
+        }
+        
+    }
+>>>>>>> 5739bfc07b7a050be795627d8cab249d787dd7c1
 
 export default EditTask;
