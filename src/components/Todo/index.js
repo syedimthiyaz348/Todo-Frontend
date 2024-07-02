@@ -7,6 +7,8 @@ const Todo = () => {
   const [todoList, setTodoList] = useState([]);
   const [addedTask, setAddedTask] = useState("");
   const [uiRendering, setUIRendering] = useState(false);
+  const [pageShifting, setPageShifting] = useState(false);
+  const [userName, setUserName] = useState('')
 
   useEffect(() => {
     const callingApi = async () => {
@@ -59,10 +61,12 @@ const Todo = () => {
     }
   };
 
-  return (
-    <div className="main-container">
+  const mainContainer = () => {
+    return(
+      <>
       <div className="header-container">
       <h1>TODO TASKS</h1>
+      <h3>Hi {userName}, Create Your Tasks</h3>
       <div className="task-input-container">
         <input
           placeholder="Add Task"
@@ -83,6 +87,36 @@ const Todo = () => {
           {todoContainer()}
         </div>
       </div>
+      </>
+    )
+  }
+
+  const homeContainer = () => {
+    const onEnteringName = event => {
+      setUserName(event.target.value)
+    }
+
+    const handlingEnterButton = () => {
+      if (userName !== ''){
+        setPageShifting(true)
+      }
+      else{
+        alert("Please Enter Your Name")
+      }
+    }
+    return(
+      <div>
+      <h1>Hi, Please Enter Your Name</h1>
+      <input placeholder="Please Enter Your Name" onChange={onEnteringName} type="text"/>
+      <button onClick={handlingEnterButton}>Enter</button>
+    </div>
+    )
+  }
+
+  return (
+    <div className="main-container">
+      {!pageShifting && homeContainer()}
+      {pageShifting && mainContainer()}
     </div>
   );
 };
