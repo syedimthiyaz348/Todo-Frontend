@@ -2,6 +2,8 @@ import React from "react";
 import "./index.css";
 import { useState, useEffect } from "react";
 import TodoTask from "../TodoTask";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const Todo = () => {
   const [todoList, setTodoList] = useState([]);
@@ -33,7 +35,7 @@ const Todo = () => {
     return (
       <ul>
         {todoList.map((eachItem) => (
-          <TodoTask taskDetails={eachItem} setUIRendering={setUIRendering} />
+          <TodoTask key={eachItem.id} taskDetails={eachItem} setUIRendering={setUIRendering} />
         ))}
       </ul>
     );
@@ -68,16 +70,18 @@ const Todo = () => {
       <h1>TODO TASKS</h1>
       <h3>Hi {userName}, Create Your Tasks</h3>
       <div className="task-input-container">
-        <input
+      <TextField onChange={enteringTodoTask} value={addedTask} className="task-input" id="outlined-basic" size="small" label="Enter Your Task" variant="outlined" />
+        {/* <input
           placeholder="Add Task"
           onChange={enteringTodoTask}
           className="task-input"
           type="text"
           value={addedTask}
-        />
-        <button onClick={addingTodo} className="add-button">
+        /> */}
+        <Button size="small" margin="dense" onClick={addingTodo} className="add-button" variant="contained">Add</Button>
+        {/* <button onClick={addingTodo} className="add-button">
           ADD
-        </button>
+        </button> */}
       </div>
       </div>
       <hr />
