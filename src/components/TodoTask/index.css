@@ -22,6 +22,10 @@
     font-size: 10px;
 }
 
+.strike-off{
+    text-decoration: line-through;
+}
+
 @media (max-width:576px){
     .todo-task-cont{
         display: flex;

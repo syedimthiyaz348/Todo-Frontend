@@ -2,15 +2,20 @@ import React from "react";
 import "./index.css";
 import { useState, useEffect } from "react";
 import TodoTask from "../TodoTask";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import CompletedTask from "../CompletedTask";
 
 const Todo = () => {
   const [todoList, setTodoList] = useState([]);
   const [addedTask, setAddedTask] = useState("");
   const [uiRendering, setUIRendering] = useState(false);
-  const [pageShifting, setPageShifting] = useState(false);
-  const [userName, setUserName] = useState('')
+  const [pageShifting, setPageShifting] = useState(true);
+  const [userName, setUserName] = useState("");
+  const completedList = todoList.filter(each => each.status === "completed")
+  const pendingList = todoList.filter(each => each.status === 'pending')
+  console.log(completedList)
+  console.log(pendingList)
 
   useEffect(() => {
     const callingApi = async () => {
@@ -31,11 +36,33 @@ const Todo = () => {
     setAddedTask(event.target.value);
   };
 
-  const todoContainer = () => {
-    return (
+  const todoPendingContainer = () => {
+    return pendingList.length === 0 ? (
+      <h3>No Tasks Available</h3>
+    ) : (
       <ul>
-        {todoList.map((eachItem) => (
-          <TodoTask key={eachItem.id} taskDetails={eachItem} setUIRendering={setUIRendering} />
+        {pendingList.map((eachItem) => (
+          <TodoTask
+            key={eachItem.id}
+            taskDetails={eachItem}
+            setUIRendering={setUIRendering}
+          />
+        ))}
+      </ul>
+    );
+  };
+
+  const todoCompletedContainer = () => {
+    return completedList.length === 0 ? (
+      <h3>No Tasks Completed Yet</h3>
+    ) : (
+      <ul>
+        {completedList.map((eachItem) => (
+          <CompletedTask
+            key={eachItem.id}
+            taskDetails={eachItem}
+            setUIRendering={setUIRendering}
+          />
         ))}
       </ul>
     );
@@ -64,58 +91,88 @@ const Todo = () => {
   };
 
   const mainContainer = () => {
-    return(
+    return (
       <>
-      <div className="header-container">
-      <h1>TODO TASKS</h1>
-      <h3>Hi {userName}, Create Your Tasks</h3>
-      <div className="task-input-container">
-      <TextField onChange={enteringTodoTask} value={addedTask} className="task-input" id="outlined-basic" size="small" label="Enter Your Task" variant="outlined" />
-        {/* <input
+        <div className="header-container">
+          <h1>TODO TASKS</h1>
+          <h3>Hi {userName}, Create Your Tasks</h3>
+          <div className="task-input-container">
+            <TextField
+              onChange={enteringTodoTask}
+              value={addedTask}
+              className="task-input"
+              id="outlined-basic"
+              size="small"
+              label="Enter Your Task"
+              variant="outlined"
+            />
+            {/* <input
           placeholder="Add Task"
           onChange={enteringTodoTask}
           className="task-input"
           type="text"
           value={addedTask}
         /> */}
-        <Button size="small" margin="dense" onClick={addingTodo} className="add-button" variant="contained">Add</Button>
-        {/* <button onClick={addingTodo} className="add-button">
+            <Button
+              size="small"
+              margin="dense"
+              onClick={addingTodo}
+              className="add-button"
+              variant="contained"
+            >
+              Add
+            </Button>
+            {/* <button onClick={addingTodo} className="add-button">
           ADD
         </button> */}
-      </div>
-      </div>
-      <hr />
-      <div className="tasks-container">
-        <div className="created-task-cont">
-          <h1>Created Tasks</h1>
-          {todoContainer()}
+          </div>
         </div>
-      </div>
+        <hr />
+        <div className="tasks-container">
+          <div className="created-task-cont">
+            <h1>Created Tasks</h1>
+            <div className="created-completed">
+              <div className="each-task-container">
+                <h2>Tasks</h2>
+                <hr/>
+                {todoPendingContainer()}
+              </div>
+              <div className="each-task-container">
+                <h2>Completed Tasks</h2>
+                <hr/>
+                {todoCompletedContainer()}
+              </div>
+            </div>
+          </div>
+        </div>
       </>
-    )
-  }
+    );
+  };
 
   const homeContainer = () => {
-    const onEnteringName = event => {
-      setUserName(event.target.value)
-    }
+    const onEnteringName = (event) => {
+      setUserName(event.target.value);
+    };
 
     const handlingEnterButton = () => {
-      if (userName !== ''){
-        setPageShifting(true)
+      if (userName !== "") {
+        setPageShifting(true);
+      } else {
+        alert("Please Enter Your Name");
       }
-      else{
-        alert("Please Enter Your Name")
-      }
-    }
-    return(
+    };
+    return (
       <div>
-      <h1>Hi, Please Enter Your Name</h1>
-      <input placeholder="Please Enter Your Name" onChange={onEnteringName} type="text"/>
-      <button onClick={handlingEnterButton}>Enter</button>
-    </div>
-    )
-  }
+        <h1>Hi, Please Enter Your Name</h1>
+        <input
+          placeholder="Please Enter Your Name"
+          onChange={onEnteringName}
+          type="text"
+        />
+        <button onClick={handlingEnterButton}>Enter</button>
+      </div>
+    );
+  };
 
   return (
     <div className="main-container">
