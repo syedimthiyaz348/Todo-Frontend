@@ -9,7 +9,7 @@ import CompletedTask from "../CompletedTask";
 const Todo = () => {
   const [todoList, setTodoList] = useState([]);
   const [addedTask, setAddedTask] = useState("");
-  const [uiRendering, setUIRendering] = useState(false);
+  const [uiRendering, setUIRendering] = useState(true);
   const [pageShifting, setPageShifting] = useState(false);
   const [userName, setUserName] = useState("");
   const completedList = todoList.filter(each => each.status === "completed")
