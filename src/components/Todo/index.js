@@ -174,8 +174,8 @@ const Todo = () => {
 
   return (
     <div className="main-container">
-      {!pageShifting && homeContainer()}
-      {pageShifting && mainContainer()}
+      {/* {!pageShifting && homeContainer()} */}
+      {mainContainer()}
     </div>
   );
 };
