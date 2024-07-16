@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 const CompletedTask = (props) => {
   const { taskDetails, setUIRendering } = props;
   const { id, todoTask, status } = taskDetails;
+  const [showDelete, setShowDelete] = useState(false);
 
   const deleteHandler = async () => {
     const url = `https://todobackend-virid.vercel.app/deletetodo/${id}`;
@@ -15,19 +16,25 @@ const CompletedTask = (props) => {
     setUIRendering((prevState) => !prevState);
   };
 
+  const onChecking = (event) => {
+    setShowDelete(event.target.checked);
+  };
+
   return (
     <>
       <li className="todo-task-cont" key={id}>
-        <input type="checkbox" id={id} />
+        <input onChange={onChecking} type="checkbox" id={id} />
         <div className="todo-label">
           <label className="input-text" htmlFor={id}>
             {todoTask}
           </label>
-          <MdDeleteOutline
+          {showDelete && (
+            <MdDeleteOutline
               aria-label="close"
               className="delete-item"
               onClick={deleteHandler}
             />
+          )}
         </div>
       </li>
     </>
