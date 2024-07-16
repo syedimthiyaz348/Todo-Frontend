@@ -57,7 +57,21 @@ ul{
     justify-self: flex-end;
 }
 
-@media (max-width:578px){
+.created-completed{
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.each-task-container{
+    box-shadow: inset 0px 0px 6px 0px ;
+    border-radius: 8px;
+    padding: 0px 20px 20px 20px;
+    width: 40%;
+}
+
+@media (max-width:600px){
     .main-container{
         display: flex;
         flex-direction: column;
@@ -120,33 +134,11 @@ ul{
     .created-completed{
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
         width: 100%;
     }
     .each-task-container{
         width: 100%;
-        
     }
     
 }
 
-@media (orientation : landscape) {
-    .each-task-container{
-        width: 50%;
-    }
-}
-
-.created-completed{
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.each-task-container{
-    box-shadow: 1px 1px 9px 1px;
-    border-radius: 8px;
-    padding: 20px;
-    width: 50%;
-}

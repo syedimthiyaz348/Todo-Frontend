@@ -14,8 +14,6 @@ const Todo = () => {
   const [userName, setUserName] = useState("");
   const completedList = todoList.filter(each => each.status === "completed")
   const pendingList = todoList.filter(each => each.status === 'pending')
-  console.log(completedList)
-  console.log(pendingList)
 
   useEffect(() => {
     const callingApi = async () => {
